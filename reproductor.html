@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Música</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    
+
+    <input type="radio" id="view-player" name="view" checked class="view-radio">
+    <input type="radio" id="view-playlist" name="view" class="view-radio">
+
+    <!-- Vista del Reproductor Principal -->
+    <div class="player-view">
+        <div class="music-player">
+            <div class="player-header">
+                <div class="now-playing">Reproduciendo</div>
+                <label for="view-playlist" class="playlist-btn">🎵 Todas las canciones</label>
+            </div>
+
+            <div class="song-display">
+                <div class="song-title">Cargando...</div>
+                <div class="artist">Artista</div>
+            </div>
+
+            <div class="album-display">
+                <div class="album-cover">
+                    <img src="" alt="Album" class="album-image">
+                </div>
+            </div>
+
+            <div class="progress-container" onclick="cambiarProgreso(event)">
+                <div class="progress-bar"></div>
+            </div>
+
+            <div class="time-info">
+                <span class="current-time">0:00</span>
+                <span class="total-time">0:00</span>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn shuffle-btn" onclick="toggleShuffle()">
+                    <i class="bi bi-shuffle"></i>
+                </button>
+                <button class="control-btn prev-btn" onclick="cancionAnterior()">
+                    <i class="bi bi-skip-start-fill"></i>
+                </button>
+                <button class="control-btn play-btn" onclick="reproducir()">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+                <button class="control-btn next-btn" onclick="cancionSiguiente()">
+                    <i class="bi bi-skip-end-fill"></i>
+                </button>
+                <button class="control-btn repeat-btn" onclick="toggleRepeat()">
+                    <i class="bi bi-repeat"></i>
+                </button>
+            </div>
+
+            <div class="volume-container">
+                <span class="control-btn volume-icon"><i class="bi bi-volume-up"></i></span>
+                <div class="volume-slider" onclick="cambiarVolumen(event)">
+                    <div class="volume-level"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vista de Playlist -->
+    <div class="playlist-view">
+        <div class="music-player playlist-mode">
+            <div class="player-header">
+                <label for="view-player" class="back-btn">← Back</label>
+                <div class="now-playing">Playlist</div>
+                <div class="songs-count">0 songs</div>
+            </div>
+
+            <div class="playlist-container">
+                <div class="songs-list"></div>
+            </div>
+
+            <div class="progress-container" onclick="cambiarProgreso(event)">
+                <div class="progress-bar"></div>
+            </div>
+
+            <div class="time-info">
+                <span class="current-time">0:00</span>
+                <span class="total-time">0:00</span>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn shuffle-btn" onclick="toggleShuffle()">
+                    <i class="bi bi-shuffle"></i>
+                </button>
+                <button class="control-btn prev-btn" onclick="cancionAnterior()">
+                    <i class="bi bi-skip-start-fill"></i>
+                </button>
+                <button class="control-btn play-btn" onclick="reproducir()">
+                    <i class="bi bi-play-fill"></i>
+                </button>
+                <button class="control-btn next-btn" onclick="cancionSiguiente()">
+                    <i class="bi bi-skip-end-fill"></i>
+                </button>
+                <button class="control-btn repeat-btn" onclick="toggleRepeat()">
+                    <i class="bi bi-repeat"></i>
+                </button>
+            </div>
+
+            <div class="volume-container">
+                <span class="control-btn volume-icon"><i class="bi bi-volume-up"></i></span>
+                <div class="volume-slider" onclick="cambiarVolumen(event)">
+                    <div class="volume-level"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

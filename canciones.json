@@ -1,0 +1,43 @@
+[
+    {
+        "id": 1,
+        "nombre": "Blue",
+        "artista": "Billie Eilish",
+        "duración": "5:43",
+        "portada": "img/portadas/blue.jpg",
+        "cancion": "mp3/Billie_Eilish_BLUE_BillieEilishVEVO.mp3"
+    },
+    {
+        "id": 2,
+        "nombre": "Baile Inolvidable",
+        "artista": "Bad Bunny",
+        "duración": "6:18",
+        "portada": "img/portadas/baile.inolvidable.jpeg",
+        "cancion": "mp3/BAD_BUNNY_BAILE_INoLVIDABLE_(Video Oficial) _DeBÍ_TiRAR_MáS_FOToS_Bad Bunny.mp3"
+    },
+    {
+        "id": 3,
+        "nombre": "Die With A Smile",
+        "artista": "Lady Gaga - Bruno Mars",
+        "duración": "6:18",
+        "portada": "img/portadas/Die With A Smile.jpeg",
+        "cancion": "cancion/Lady_Gaga_Bruno_Mars _Die_With_A_SmileLadyGagaVEVO.mp3"
+    },
+    {
+        "id": 4,
+        "nombre": "Mia",
+        "artista": "Nanpa Basico",
+        "duración": "3:10",
+        "portada": "img/portadas/mia.jpeg",
+        "cancion": "mp3/Mia_Nanpa_Básico_Nanpa Basico_Oficial.mp3"
+    },
+    {
+        "id": 5,
+        "nombre": "Flores",
+        "artista": "Babi",
+        "duración": "3:28",
+        "portada": "img/portadas/flores.jpeg",
+        "cancion": "mp3/BABI _FLORES_(VIDEO OFICIAL)_babi.mp3"
+    }
+
+]

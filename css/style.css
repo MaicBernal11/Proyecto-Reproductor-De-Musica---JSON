@@ -1,0 +1,448 @@
+ @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+
+
+        .welcome-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .welcome-content {
+            text-align: center;
+            color: white;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .welcome-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .welcome-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .welcome-subtitle {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .enter-btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* ===== MAIN PLAYER ===== */
+        .view-radio {
+            display: none;
+        }
+
+        .player-view,
+        .playlist-view {
+            display: none;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        #view-player:checked~.player-view {
+            display: flex;
+            justify-content: center;
+        }
+
+        #view-playlist:checked~.playlist-view {
+            display: flex;
+            justify-content: center;
+        }
+
+        .music-player {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .now-playing {
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .playlist-btn,
+        .back-btn {
+            background: #000000;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .playlist-btn:hover,
+        .back-btn:hover {
+            background: #333333;
+            transform: translateY(-2px);
+        }
+
+        .songs-count {
+            font-size: 13px;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .song-display {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .song-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 8px;
+        }
+
+        .artist {
+            font-size: 16px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .album-display {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .album-cover {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .album-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #000000;
+            border-radius: 10px;
+            transition: width 0.1s ease;
+        }
+
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .control-btn {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .control-btn:hover {
+            background: #f5f5f5;
+            transform: scale(1.1);
+        }
+
+        .play-btn {
+            background: #000000;
+            color: #ffffff;
+            font-size: 20px;
+            width: 60px;
+            height: 60px;
+        }
+
+        .play-btn:hover {
+            background: #333333;
+            transform: scale(1.05);
+        }
+
+        .control-btn.active {
+            color: #667eea;
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0 10px;
+        }
+
+        .volume-icon {
+            font-size: 20px;
+            width: auto;
+            height: auto;
+            padding: 5px;
+        }
+
+        .volume-slider {
+            flex: 1;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .volume-level {
+            height: 100%;
+            width: 70%;
+            background: #000000;
+            border-radius: 10px;
+            transition: width 0.1s ease;
+        }
+
+        /* ===== PLAYLIST ===== */
+        .playlist-container {
+            margin-bottom: 25px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .playlist-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .playlist-container::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+
+        .playlist-container::-webkit-scrollbar-thumb {
+            background: #cccccc;
+            border-radius: 10px;
+        }
+
+        .playlist-container::-webkit-scrollbar-thumb:hover {
+            background: #999999;
+        }
+
+        .songs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .song-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .song-item:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+
+        .song-item.active {
+            background: #000000;
+        }
+
+        .song-item.active .song-name,
+        .song-item.active .song-artist {
+            color: #ffffff;
+        }
+
+        .song-item.active .song-number {
+            color: #ffffff;
+        }
+
+        .song-number {
+            font-size: 14px;
+            font-weight: 600;
+            color: #999;
+            width: 20px;
+            text-align: center;
+        }
+
+        .song-thumb {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .song-info {
+            flex: 1;
+        }
+
+        .song-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 4px;
+        }
+
+        .song-artist {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .now-playing-indicator {
+            font-size: 14px;
+            color: #ffffff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .song-item.active .now-playing-indicator {
+            opacity: 1;
+        }
+
+        .playlist-mode .album-display {
+            display: none;
+        }
+
+        .playlist-mode .song-display {
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .music-player {
+                padding: 20px;
+            }
+
+            .album-cover {
+                width: 240px;
+                height: 240px;
+            }
+
+            .song-title {
+                font-size: 24px;
+            }
+
+            .control-btn {
+                font-size: 20px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .play-btn {
+                width: 55px;
+                height: 55px;
+            }
+
+            .welcome-title {
+                font-size: 36px;
+            }
+
+            .welcome-icon {
+                font-size: 60px;
+            }
+        }
