@@ -199,3 +199,51 @@ function toggleRepeat() {
         }
     });
 }
+
+// Permite cambiar la posición de reproducción al hacer clic en la barra
+function cambiarProgreso(evento) {
+    const contenedor = evento.currentTarget;
+    const rect = contenedor.getBoundingClientRect();
+    const posicion = (evento.clientX - rect.left) / rect.width;
+
+    if (audio.duration) {
+        audio.currentTime = posicion * audio.duration;
+    }
+}
+
+// Actualiza la barra de progreso y el tiempo actual de reproducción
+function actualizarProgreso() {
+    if (audio.duration) {
+        // Calcula y actualiza el porcentaje de progreso
+        const porcentaje = (audio.currentTime / audio.duration) * 100;
+
+        document.querySelectorAll(".progress-bar").forEach(barra => {
+            barra.style.width = porcentaje + "%";
+        });
+
+        // Formatea y muestra el tiempo actual
+        const minutos = Math.floor(audio.currentTime / 60);
+        const segundos = Math.floor(audio.currentTime % 60);
+        const segundosFormato = segundos < 10 ? "0" + segundos : segundos;
+
+        document.querySelectorAll(".current-time").forEach(el => {
+            el.innerHTML = minutos + ":" + segundosFormato;
+        });
+    }
+}
+
+// Inicializa los eventos del reproductor de audio
+function inicializarEventos() {
+    // Actualiza el progreso continuamente mientras se reproduce
+    audio.addEventListener("timeupdate", actualizarProgreso);
+
+    // Maneja el evento cuando termina una canción
+    audio.addEventListener("ended", function () {
+        if (modoRepetir) {
+            audio.currentTime = 0;
+            audio.play();
+        } else {
+            cancionSiguiente();
+        }
+    });
+}
