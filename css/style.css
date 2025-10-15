@@ -116,6 +116,7 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             width: 100%;
             max-width: 420px;
+            margin-top: -15px;
         }
 
         .player-header {

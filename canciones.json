@@ -19,9 +19,9 @@
         "id": 3,
         "nombre": "Die With A Smile",
         "artista": "Lady Gaga - Bruno Mars",
-        "duración": "6:18",
+        "duración": "4:12",
         "portada": "img/portadas/Die With A Smile.jpeg",
-        "cancion": "cancion/Lady_Gaga_Bruno_Mars _Die_With_A_SmileLadyGagaVEVO.mp3"
+        "cancion": "mp3/Lady_Gaga_Bruno_Mars _Die_With_A_SmileLadyGagaVEVO.mp3"
     },
     {
         "id": 4,
