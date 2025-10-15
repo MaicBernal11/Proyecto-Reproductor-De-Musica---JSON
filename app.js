@@ -116,3 +116,86 @@ function actualizarPlaylistActiva() {
         }
     });
 }
+
+// Alterna entre reproducir y pausar la canción
+function reproducir() {
+    if (estaReproduciendo) {
+        audio.pause();
+        estaReproduciendo = false;
+    } else {
+        audio.play();
+        estaReproduciendo = true;
+    }
+    actualizarIconoPlay();
+}
+
+// Cambia el ícono del botón play/pause
+function actualizarIconoPlay() {
+    document.querySelectorAll(".play-btn i").forEach(icono => {
+        if (estaReproduciendo) {
+            icono.className = "bi bi-pause-fill";
+        } else {
+            icono.className = "bi bi-play-fill";
+        }
+    });
+}
+
+// Reproduce la canción anterior (navegación cíclica)
+function cancionAnterior() {
+    if (indiceActual === 0) {
+        indiceActual = canciones.length - 1;
+    } else {
+        indiceActual--;
+    }
+    mostrarCancion(indiceActual);
+    if (estaReproduciendo) {
+        audio.play();
+    }
+}
+
+// Reproduce la siguiente canción (con soporte para modo aleatorio)
+function cancionSiguiente() {
+    if (modoAleatorio) {
+        // Selecciona una canción aleatoria diferente a la actual
+        let nuevoIndice;
+        do {
+            nuevoIndice = Math.floor(Math.random() * canciones.length);
+        } while (nuevoIndice === indiceActual && canciones.length > 1);
+        indiceActual = nuevoIndice;
+    } else {
+        // Avanza a la siguiente canción de forma secuencial
+        if (indiceActual === canciones.length - 1) {
+            indiceActual = 0;
+        } else {
+            indiceActual++;
+        }
+    }
+    mostrarCancion(indiceActual);
+    if (estaReproduciendo) {
+        audio.play();
+    }
+}
+
+// Activa o desactiva el modo aleatorio
+function toggleShuffle() {
+    modoAleatorio = !modoAleatorio;
+    document.querySelectorAll(".shuffle-btn").forEach(btn => {
+        if (modoAleatorio) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+}
+
+// Activa o desactiva el modo repetir
+function toggleRepeat() {
+    modoRepetir = !modoRepetir;
+    document.querySelectorAll(".repeat-btn").forEach(btn => {
+        if (modoRepetir) {
+            btn.classList.add("active");
+        } else {
+            btn.classList.remove("active");
+        }
+    });
+}
